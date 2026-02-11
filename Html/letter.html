@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter</title>
+
+    <link rel = "stylesheet" href="style.css">
+
+    <style>
+        body{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+    <source src="" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<script>
+    const audio = document.getElementById("bg-music");
+
+    // Try to play immediately
+    audio.play().catch(error => {
+        // If browser blocks it, wait for the first user interaction
+        console.log("Autoplay blocked. Waiting for interaction.");
+        document.body.addEventListener('click', () => {
+            audio.play();
+        }, { once: true }); // This ensures the listener only runs once
+    });
+</script>
+
+    <div id="heart-container"></div> <div class="letter">
+        <h1>Dear baby,</h1>
+        <p>
+            Write your letter here
+        </p>
+        <p>Happy Valentines baby.....</p>
+    </div>
+
+    <a href="homepage.html" class="pixel-button">Go Back</a>
+
+</body>
+</html>

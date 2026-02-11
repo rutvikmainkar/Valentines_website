@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=" stylesheet" href = "style.css">
+    <title>Question?</title>
+</head>
+<body>
+    <body>
+    <div id="heart-container"></div>
+
+    <div id="letter-container">
+        <div class="letter-window">
+            
+            <h1 id="letter-title">Will you be my Valentine?</h1>
+
+            <img id="letter-cat" class="cat" 
+                 src="https://res.cloudinary.com/dmisljv7n/image/upload/v1770294262/cat_heart_jx1hkf.gif" 
+                 alt="Cute Cat" />
+
+            <div class="buttons" id="letter-buttons">
+                <img id="yesBtn" class="btn-img" 
+                     src="https://res.cloudinary.com/dmisljv7n/image/upload/v1770294261/yes_fiyd3g.png" 
+                     alt="Yes" />
+                
+                <img id="noBtn" class="btn-img" 
+                     src="https://res.cloudinary.com/dmisljv7n/image/upload/v1770294261/no_sezhev.png" 
+                     alt="No" />
+            </div>
+
+            <p id="final-text" class="final-text">
+                💖 <strong>It's a Date!</strong><br>
+                Mwahhhh...... ✨
+            </p>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const noBtn = document.getElementById("noBtn");
+            const yesBtn = document.getElementById("yesBtn");
+            const title = document.getElementById("letter-title");
+            const catImg = document.getElementById("letter-cat");
+            const buttons = document.getElementById("letter-buttons");
+            const finalText = document.getElementById("final-text");
+
+            // --- 1. Auto-start the Hearts ---
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+                
+                // Cleanup heart after animation
+                setTimeout(() => heart.remove(), 5000);
+            }
+
+            // Spawns a heart every 300ms
+            setInterval(createHeart, 300);
+
+            // --- 2. Runaway NO Button Logic ---
+            noBtn.addEventListener("mouseover", () => {
+                // Calculate random movement within the viewport
+                const x = Math.random() * 300 - 150;
+                const y = Math.random() * 200 - 100;
+                noBtn.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            // --- 3. YES Button Clicked Logic ---
+            yesBtn.addEventListener("click", () => {
+                title.textContent = "Yayyyy! 💖";
+                // Change cat to the dancing version
+                catImg.src = "https://res.cloudinary.com/dmisljv7n/image/upload/v1770294261/cat_dance_kfwnlo.gif";
+                // Hide buttons and show text
+                buttons.style.display = "none";
+                finalText.style.display = "block";
+            });
+        });
+    </script>
+</body>
+</body>
+</html>
